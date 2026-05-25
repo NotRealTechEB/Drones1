@@ -1,32 +1,55 @@
 package cl.example.Drones.dto;
 
+import java.time.LocalDate;
+
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.NotNull;
 
 public class DronesDTO {
 
-    @NotBlank(message = "El número de serie no puede estar vacío")
-    @Size(min = 5, max = 50, message = "El número de serie debe tener entre 5 y 50 caracteres")
-    private String numeroSerie;
+    @NotBlank(message = "El número de registro no puede estar vacío")
+    private String numeroRegistro;
 
-    @NotBlank(message = "El modelo no puede estar vacío")
-    private String modeloDrone;
+    @NotNull(message = "El peso no puede estar vacío")
+    private Double peso;
 
-    public String getNumeroSerie() {
-        return numeroSerie;
+    @NotNull(message = "El ID del tipo de trabajo no puede estar vacío")
+    private Long idTipo;
+
+    @NotNull(message = "La fecha de vencimiento del seguro no puede estar vacía")
+    private LocalDate fechaVencimientoSeguro;
+
+    public String getNumeroRegistro() {
+        return numeroRegistro;
     }
 
-    public void setNumeroSerie(String numeroSerie) {
-        this.numeroSerie = numeroSerie;
+    public void setNumeroRegistro(String numeroRegistro) {
+        this.numeroRegistro = numeroRegistro;
     }
 
-    public String getModeloDrone() {
-        return modeloDrone;
+    public Double getPeso() {
+        return peso;
     }
 
-    public void setModeloDrone(String modeloDrone) {
-        this.modeloDrone = modeloDrone;
+    public void setPeso(Double peso) {
+        this.peso = peso;
     }
 
- 
+    public Long getIdTipo() {
+        return idTipo;
+    }
+
+    public void setIdTipo(Long idTipo) {
+        this.idTipo = idTipo;
+    }
+
+    public LocalDate getFechaVencimientoSeguro() {
+        return fechaVencimientoSeguro;
+    }
+
+    public void setFechaVencimientoSeguro(LocalDate fechaVencimientoSeguro) {
+        this.fechaVencimientoSeguro = fechaVencimientoSeguro;
+    }
+
+    // Pon tu cursor aquí y usa "Ctrl + ." para regenerar los Getters y Setters
 }

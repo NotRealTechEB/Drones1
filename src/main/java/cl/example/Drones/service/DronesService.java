@@ -26,8 +26,12 @@ public class DronesService {
 
     public Drones guardarDrone(DronesDTO dto) {
         Drones drone = new Drones();
-        drone.setNumeroSerie(dto.getNumeroSerie());
-        drone.setModeloDrone(dto.getModeloDrone());
+        // Pasamos los nuevos datos del DTO al Modelo
+        drone.setNumeroRegistro(dto.getNumeroRegistro());
+        drone.setPeso(dto.getPeso());
+        drone.setIdTipo(dto.getIdTipo());
+        drone.setFechaVencimientoSeguro(dto.getFechaVencimientoSeguro());
+        
         return repository.save(drone);
     }
 
@@ -35,8 +39,12 @@ public class DronesService {
         Optional<Drones> existente = repository.findById(id);
         if (existente.isPresent()) {
             Drones drone = existente.get();
-            drone.setNumeroSerie(dto.getNumeroSerie());
-            drone.setModeloDrone(dto.getModeloDrone());
+            // Actualizamos con los nuevos campos del diagrama
+            drone.setNumeroRegistro(dto.getNumeroRegistro());
+            drone.setPeso(dto.getPeso());
+            drone.setIdTipo(dto.getIdTipo());
+            drone.setFechaVencimientoSeguro(dto.getFechaVencimientoSeguro());
+            
             return repository.save(drone);
         }
         return null;
