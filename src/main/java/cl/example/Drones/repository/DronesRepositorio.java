@@ -10,5 +10,5 @@ import cl.example.Drones.modelo.Drones;
 @Repository
 public interface DronesRepositorio extends JpaRepository<Drones, Long> {
     
-    Optional<Drones> findByNumeroSerie(String numeroSerie);
+    Optional<Drones> findByNumeroRegistro(String numeroSerie);
 }
