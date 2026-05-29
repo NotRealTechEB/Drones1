@@ -51,5 +51,5 @@ public class DronesDTO {
         this.fechaVencimientoSeguro = fechaVencimientoSeguro;
     }
 
-    // Pon tu cursor aquí y usa "Ctrl + ." para regenerar los Getters y Setters
+    
 }

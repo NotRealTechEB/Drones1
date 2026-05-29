@@ -1,9 +1,9 @@
 package cl.example.Drones.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,28 +27,26 @@ public class DronesControlador {
     private DronesService service;
 
     @GetMapping
-    public List<Drones> obtenerTodos() {
-        return service.obtenerTodos();
+    public ResponseEntity<List<Drones>> obtenerTodos() {
+        return ResponseEntity.ok(service.obtenerTodos());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Drones> obtenerPorId(@PathVariable Long id) {
-        Optional<Drones> drone = service.obtenerPorId(id);
-        return drone.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+        
+        return ResponseEntity.ok(service.obtenerPorId(id));
     }
 
     @PostMapping
-    public Drones guardarDrone(@Valid @RequestBody DronesDTO dto) {
-        return service.guardarDrone(dto);
+    public ResponseEntity<Drones> guardarDrone(@Valid @RequestBody DronesDTO dto) {
+        
+        return new ResponseEntity<>(service.guardarDrone(dto), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Drones> actualizarDrone(@PathVariable Long id, @Valid @RequestBody DronesDTO dto) {
-        Drones actualizado = service.actualizarDrone(id, dto);
-        if (actualizado != null) {
-            return ResponseEntity.ok(actualizado);
-        }
-        return ResponseEntity.notFound().build();
+       
+        return ResponseEntity.ok(service.actualizarDrone(id, dto));
     }
 
     @DeleteMapping("/{id}")

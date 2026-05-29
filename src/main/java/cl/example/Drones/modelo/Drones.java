@@ -1,5 +1,7 @@
 package cl.example.Drones.modelo;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,10 +18,16 @@ public class Drones {
     private Long idDrone;
 
     @Column(nullable = false, unique = true, length = 50)
-    private String numeroSerie;
+    private String numeroRegistro;
 
-    @Column(nullable = false, length = 100)
-    private String modeloDrone;
+    @Column(nullable = false)
+    private Double peso;
+
+    @Column(name = "id_tipo", nullable = false)
+    private Long idTipo;
+
+    @Column(name = "f_vencimiento_seguro", nullable = false)
+    private LocalDate fechaVencimientoSeguro;
 
     public Long getIdDrone() {
         return idDrone;
@@ -29,21 +37,37 @@ public class Drones {
         this.idDrone = idDrone;
     }
 
-    public String getNumeroSerie() {
-        return numeroSerie;
+    public String getNumeroRegistro() {
+        return numeroRegistro;
     }
 
-    public void setNumeroSerie(String numeroSerie) {
-        this.numeroSerie = numeroSerie;
+    public void setNumeroRegistro(String numeroRegistro) {
+        this.numeroRegistro = numeroRegistro;
     }
 
-    public String getModeloDrone() {
-        return modeloDrone;
+    public Double getPeso() {
+        return peso;
     }
 
-    public void setModeloDrone(String modeloDrone) {
-        this.modeloDrone = modeloDrone;
+    public void setPeso(Double peso) {
+        this.peso = peso;
     }
 
-  
+    public Long getIdTipo() {
+        return idTipo;
+    }
+
+    public void setIdTipo(Long idTipo) {
+        this.idTipo = idTipo;
+    }
+
+    public LocalDate getFechaVencimientoSeguro() {
+        return fechaVencimientoSeguro;
+    }
+
+    public void setFechaVencimientoSeguro(LocalDate fechaVencimientoSeguro) {
+        this.fechaVencimientoSeguro = fechaVencimientoSeguro;
+    }
+
+    
 }
